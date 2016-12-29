@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(optical)
+set(OpenCV_DIR  /usr/local/share/OpenCV)
+FIND_PACKAGE( OpenCV REQUIRED )
+include_directories(${Opencv_INCLUDE_DIRS})
+add_executable(optical src/optical.cpp )
+target_link_libraries(optical  ${OpenCV_LIBRARIES}      )
