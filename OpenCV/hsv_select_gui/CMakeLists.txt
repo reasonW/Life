@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project( hsv_color )
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( hsv_color hsv_color.cpp )
+target_link_libraries( hsv_color ${OpenCV_LIBS} )
