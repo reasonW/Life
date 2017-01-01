@@ -53,14 +53,14 @@ int main( int argc, char** argv )
 	rect.y=40;
 	rect.width=image.cols-100;
 	rect.height=image.rows-80;
-    	(mask(rect)).setTo( Scalar(GC_PR_FGD) );    //GC_PR_FGD == 3£¬ 
+    	(mask(rect)).setTo( Scalar(GC_PR_FGD) );    //GC_PR_FGD == 3Â£Â¬ 
 	grabCut( image, mask, rect, bgdModel, fgdModel, 1,GC_INIT_WITH_RECT );
 	while(1)
 	{
 		cap>>image;
 		resize(image, image, Size (640,630*image.rows/image.cols));
-		//gcapp.setImageAndWinName( image, winName );
-		//	grabCut( image, mask, rect, bgdModel, fgdModel, 1,GC_INIT_WITH_RECT );
+		//uncomment this line code the programe will be normal		
+		//grabCut( image, mask, rect, bgdModel, fgdModel, 1,GC_INIT_WITH_RECT ); 
 		grabCut( image, mask, rect, bgdModel, fgdModel, 2,GC_EVAL );
 		getBinMask( mask, binMask );
 		image.copyTo( res, binMask );
