@@ -106,6 +106,24 @@ void motionToColor(const Mat &flowx, const Mat &flowy,Mat &color)
             }  
         }  
     }
+/*add a matrix to record the pixel moving for tracking most fast region
+    Mat Moving,Moving_tmp;
+    Moving.create(flowx.rows, flowx.cols, CV_8UC3);
+    Moving_tmp.create(flowx.rows, flowx.cols, CV_8UC3);
+    Scalar x_mean=mean(abs(flowx), noArray());
+    Scalar y_mean=mean(abs(flowy), noArray());
+    for (int i=0;i<flows.rows;++i)
+    {
+        for(int j=0;j<flows.cols;++j)
+        {
+            Moving_tmp.at<float>(i,j)=Moving.at<float>(i+flowx.at<float>(i,j ),j+flowy.at<float>(i,j )); 
+
+            if (x_mean>flowx.at<float>(i,j) || y_mean>flowy.at<float>(i,j) )
+                Moving_tmp.at<float>(i,j)++;
+        }    
+    }
+    Moving=Moving_tmp;
+*/
     //Angle=Angle/(double)(flowx.rows*flowx.cols);
    // cout<<"Angle "<<Angle<<endl;
    double minv = 0.0, maxv = 0.0;  
