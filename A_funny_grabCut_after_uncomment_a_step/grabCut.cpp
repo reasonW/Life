@@ -1,4 +1,8 @@
-
+// grubcut for video   
+// Author : reasonW  
+// Date   : 2016-12-29  
+// HomePage : http://github.com/reasonW  
+// Email  :charlewander@gmail.com 
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include <iostream>
