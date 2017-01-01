@@ -1,3 +1,8 @@
+// Farneback dense optical flow calculate for a conveyor belt monitoring 
+// Author : reasonW  
+// Date   : 2016-12-29  
+// HomePage : http://github.com/reasonW  
+// Email  :charlewander@gmail.com 
 #include "optical.h"
 using namespace cv;
 using namespace std;
