@@ -1,8 +1,3 @@
-// Farneback dense optical flow calculate for a conveyor belt monitoring 
-// Author : reasonW  
-// Date   : 2016-12-29  
-// HomePage : http://github.com/reasonW  
-// Email  :charlewander@gmail.com 
 #include "optical.h"
 using namespace cv;
 using namespace std;
@@ -18,13 +13,26 @@ int main(int argc, const char** argv )
  		cap.open(argv[1]);
     	if( !cap.isOpened() )
         		return -1;
+
         	VideoWriter writer;
 	makecolorwheel(colorwheel);
-    	Mat prevgray, gray, frame;
+    	Mat prevgray, gray;
          	cvNamedWindow("Image",1); 
-        	setMouseCallback( "Image", onMouse, 0 );
-          	cap >> frame;
-          	resize(frame, frame, Size(640,480));
+/*        	setMouseCallback( "Image", onMouse, 0 );
+*/          	cap >> frame;
+        	resize(frame, frame, Size(640, 640*frame.rows/frame.cols), INTER_LINEAR);
+          	selection.x=200;
+        	selection.y=frame.rows*0.1;
+        	selection.width=640-selection.x-640*0.1;
+        	selection.height=frame.rows*0.9;
+        	ROI_flag=true;
+	// Ptr<AKAZE> detector = AKAZE::create();
+/*	Ptr<ORB> detector=ORB::create();
+	// or Ptr<FeatureDetector> detector = new AKAZE();
+	
+	std::vector<KeyPoint> keypoints_1, keypoints_2;
+	Mat descriptors_1, descriptors_2;*/
+        	createTrackbar( "velocity", "Image", &velocity, 10, velocityseg );
          	imshow("Image", frame);
 	while(1)
 	{
@@ -54,7 +62,9 @@ int main(int argc, const char** argv )
 	                        	if( prevgray.data )
 	                        	{
 	                        		Mat flow,flowx,flowy,motion2color;
-		                          	calcOpticalFlowFarneback(prevgray, gray, flow, 0.5, 3, 15, 3, 5, 1.2, 0);  
+		                          	calcOpticalFlowFarneback(prevgray, gray, flow, 0.5, 3, 20, 3, 7, 1.5, 1);  
+	//motion2color.create(flowx.size(),CV_8UC1);
+
 		                          	Mat tmpmat[2];
 		                          	split(flow, tmpmat);
 		                          	flowx=tmpmat[0];
@@ -64,22 +74,27 @@ int main(int argc, const char** argv )
 		                          	Mat mask;
 		                          	cvtColor(motion2color, mask, CV_BGR2GRAY);
 		                          	motion2color.copyTo(imageROI,mask);
+		                          	//Mat mulll=gray.mul(motion2color);
+		                          	//gray=gray.mul(motion2color);
+				//detector->detectAndCompute ( mulll,noArray(), keypoints_1,descriptors_1 );
+				//cv::drawKeypoints(frame(selection), keypoints_1, frame(selection));
+		                          	t = ((double)cvGetTickCount() - t)/((double)cvGetTickFrequency()*1000.) ;
+	                          		//cout << "cost time: " << t <<"  ms/fps"<< endl;
 		                          	std::stringstream ss;
-		                          	ss<<Rool_angle[0];
+		                          	ss<< t;
 		                          	string sss;
 		                          	ss>>sss;
-		                          	putText(frame, "Max speed angle :  "+sss, Point(20,415), 4,0.5 ,Scalar(0,255,0),1,8);	
-		                          	std::stringstream ss1;
-		                          	ss1<<Rool_angle[1];
-		                          	string sss1;
-		                          	ss1>>sss1;
-		                          	putText(frame, "MS angle rate :  "+sss1+"%", Point(20,440), 4,0.5 ,Scalar(0,255,0),1,8);
-		                          	imshow("Image", frame);
+		                          	putText(frame, sss+"  fps", Point(20,50), 4,0.5 ,Scalar(0,255,0),1,8);
+		                          	if (saveFlag)
+		                          	{
+		                          		imwrite("outlier.png",frame);
+		                          		saveFlag=false;
+		                          	}
+		                          	velocityseg(0,0);
 		                          	writer<<frame;
 	                        	}
 	                          	std::swap(prevgray, gray);
-	                           	t = (double)cvGetTickCount() - t;
-	                          	//cout << "cost time: " << t / ((double)cvGetTickFrequency()*1000.) <<"  ms/fps"<< endl;
+
 	        	}
        	        	if(waitKey(5)>=0)
             			break;
