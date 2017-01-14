@@ -1,7 +1,0 @@
-cmake_minimum_required(VERSION 2.8.3)
-project(grabCut)
-set(OpenCV_DIR  /usr/local/share/OpenCV)
-FIND_PACKAGE( OpenCV REQUIRED )
-include_directories(${Opencv_INCLUDE_DIRS})
-add_executable(grabCut grabCut.cpp )
-target_link_libraries(grabCut  ${OpenCV_LIBRARIES}      )
