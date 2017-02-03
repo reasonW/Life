@@ -1,8 +1,7 @@
 # reason_W_life.io
 This page will be my blog in next years, recoding my learning process.
 
-## [Thinking](https://github.com/reasonW/reason_W_life/tree/master/Thinking)
-
+## [Thinking](https://github.com/reasonW/reason_W_life/tree/master/Thinking)</br>
 - life
 - study
 - work/competation
@@ -18,20 +17,19 @@ This page will be my blog in next years, recoding my learning process.
 ## Coding
 
 ### [PCL](http://pointclouds.org/) 
-chinese tutorial for 7 days
-
+**chinese tutorial for 7 days</br>
 ```
 I will update this after my final examiantion.
 ```
 
 ### [OpenNI](http://openni.ru/) 
-a simple demo working with Pcl and OpenCV on ROS
+**a simple demo working with Pcl and OpenCV on ROS</br>
 ```
 Upload before 3-20-2017
 ```
 
 ### [OpenCV](https://github.com/reasonW/reason_W_life/tree/master/OpenCV)
-some funny applications on robocup or robomaster
+**some funny applications on robocup or robomaster</br>
 ```
 Upload before 4-20-2017
 ```
