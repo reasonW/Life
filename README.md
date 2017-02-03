@@ -3,10 +3,7 @@ This page will be my blog in next years, recoding my learning process.
 
 ## [Thinking](https://github.com/reasonW/reason_W_life/tree/master/Thinking) 
 
-- life
-- study
-- work/competation
-- love
+**anything **
 
 ## Learning
 - [Course](https://github.com/reasonW/reason_W_life.io/tree/master/Course)
