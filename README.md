@@ -1,6 +1,5 @@
 # reason_W's coding_life
-This page will be my blog in next years, recoding my learning process.
-
+some codes
 ## [Thinking](https://github.com/reasonW/reason_W_life/tree/master/Thinking) 
 
 **anything**
