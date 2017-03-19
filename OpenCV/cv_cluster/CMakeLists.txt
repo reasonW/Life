@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(cluster)
+set(OpenCV_DIR  /usr/local/share/OpenCV)
+FIND_PACKAGE( OpenCV REQUIRED )
+include_directories(${Opencv_INCLUDE_DIRS})
+add_executable(cluster src/cluster.cpp )
+target_link_libraries(cluster  ${OpenCV_LIBRARIES}      )
